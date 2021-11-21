@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './src/screens/HomeScreen';
 import NewScreen from './src/screens/NewScreen';
+import GetStartedScreen from "./src/screens/GetStartedScreen";
+import WelcomeScreen from "./src/screens/WelcomeScreen";
 
 const Stack = createStackNavigator();
 
@@ -16,7 +18,7 @@ export default function App() {
         screenOptions={{
 			    headerStyle: {backgroundColor: '#228CDB'},
         	headerTintColor: '#fff'
-        }} initialRouteName="Home">
+        }} initialRouteName="GetStarted">
         <Stack.Screen 
           name="Home" 
           component={HomeScreen} 
@@ -33,6 +35,8 @@ export default function App() {
           })}
         />
         <Stack.Screen name="New" component={NewScreen} />
+        <Stack.Screen name="GetStarted" component={GetStartedScreen} />
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
