@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, FlatList, TextInput } from "react-native";
+import { WebView } from 'react-native-webview'
 import TopImageBackground from "../components/TopImageBackground";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import GetStartedImage from "../components/GetStartedImage";
@@ -9,6 +10,8 @@ import axios from 'axios';
 import { SearchBar } from 'react-native-elements';
 import filter from 'lodash.filter';
 import { useForm, Controller } from 'react-hook-form';
+import HTML from 'react-native-render-html';
+
 
 
 export default function DrugsSearchScreen({ navigation }) {
@@ -26,11 +29,13 @@ export default function DrugsSearchScreen({ navigation }) {
         const result = await axios(makeUrl(data.drugname));
         setData(result.data.results);  
         setName(data.drugname);
+        console.log(result.data.results)
   
 };
 
   return (
   <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
+      
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             activeOpacity={0.8}
@@ -59,6 +64,7 @@ export default function DrugsSearchScreen({ navigation }) {
             data={data}
             extraData={name}
             keyExtractor={({ id }, index) => id}
+            windowSize={3}
             renderItem={({ item }) => (
             <View>
               <Text>{item.openfda.brand_name}</Text>
@@ -67,10 +73,20 @@ export default function DrugsSearchScreen({ navigation }) {
               <Text>{item.precautions}</Text>
               <Text>{item.warnings}</Text>
               <Text>{item.openfda.manufacturer_name + "\n"}</Text>
-              <View>{item.openfda.clinical_studies_table}</View>
-            </View>
-            )}
-          />
+              <View>
+                <View>
+                {(item.clinical_studies_table != undefined && item.clinical_studies_table.length > 0) ? 
+
+                (item.clinical_studies_table.map((table) => (
+                    <HTML source={{html: table}}/>
+                ))) :
+                (<View></View>) 
+        
+                }              
+                </View>
+            </View> 
+            </View>)} />
+          
         
         </View>
     </SafeAreaView>
