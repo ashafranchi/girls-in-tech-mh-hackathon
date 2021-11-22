@@ -1,11 +1,11 @@
 import * as React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
+import SecondImage from "../components/SecondImage";
 import TopImageBackground from "../components/TopImageBackground";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import GetStartedImage from "../components/GetStartedImage";
 import { useSafeArea, SafeAreaView } from "react-native-safe-area-context";
 
-export default function GetStartedScreen({ navigation }) {
+export default function SecondOnboardingScreen({ navigation }) {
   const insets = useSafeArea();
 
   return (
@@ -13,17 +13,17 @@ export default function GetStartedScreen({ navigation }) {
       <TopImageBackground />
       <View style={styles.getStartedContainer}>
         <View style={styles.imageContainer}>
-          <GetStartedImage />
+          <SecondImage />
         </View>
         <View>
-            <Text style={styles.topText}>Explore metal health topics and symptoms</Text>
-            <Text style={styles.caption}>Our encyclopedia features a wide range of mental health topics that are free to explore.</Text>
+            <Text style={styles.topText}>Learn about medication and therapies</Text>
+            <Text style={styles.caption}>    From SSRIs to yoga, our Medication and Therapies catalog includes the most common mental health remedies and discusses their benefits, side effects, and general use cases.</Text>
         </View>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             activeOpacity={0.8}
             style={styles.touchable}
-            onPress={() => navigation.navigate('SecondOnboarding')}
+            onPress={() => navigation.navigate('ThirdOnboarding')}
           >
             <Text style={styles.touchableText}>Next</Text>
           </TouchableOpacity>

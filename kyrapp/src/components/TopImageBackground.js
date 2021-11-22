@@ -1,8 +1,18 @@
 import * as React from "react";
-import Svg, { G, Path, Circle } from "react-native-svg";
+import { View } from "react-native";
+import Svg, {
+  Defs,
+  LinearGradient,
+  Stop,
+  G,
+  Path,
+  Circle,
+  Ellipse,
+} from "react-native-svg";
 
-export default (props) => {
+const TopImageBackground = (props) => {
   return (
+    <View>
     <Svg
       width={341.706}
       height={285.883}
@@ -130,5 +140,8 @@ export default (props) => {
         />
       </G>
     </Svg>
+    </View>
   );
 };
+
+export default TopImageBackground;

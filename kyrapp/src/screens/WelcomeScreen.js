@@ -1,111 +1,86 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import TopImageBackground from "../components/TopImageBackground";
 import { TouchableOpacity } from "react-native-gesture-handler";
-// import { Background } from "./components/Background";
-// import { TopImageBackground as ColoredDotsBackground } from "./components/TopImageBackground";
-// import { WelcomeImage } from "./components/WelcomeImage";
-
-const { width, height } = Dimensions.get("window");
+import WelcomeImage from "../components/WelcomeImage";
+import { useSafeArea, SafeAreaView } from "react-native-safe-area-context";
 
 export default function WelcomeScreen({ navigation }) {
-  const next = () => navigation.navigate("Home");
+  const insets = useSafeArea();
 
   return (
-    <View style={[styles.container, { paddingTop: 10 }]}>
-      {/* <ColoredDotsBackground />
-      <Background /> */}
-      <View style={styles.welcomeContainer}>
+  <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
+      <TopImageBackground />
+      <View style={styles.getStartedContainer}>
         <View style={styles.imageContainer}>
-          {/* <WelcomeImage /> */}
+          <WelcomeImage />
         </View>
-        <View style={{ flex: 1 }}>
-          <View style={styles.textContainer}>
-            <Text style={styles.welcomeText}>Welcome</Text>
-            <Text style={[styles.instructionsText, { marginTop: 30 }]}>
-              Well you have thus come this far!
-            </Text>
-            <Text style={styles.instructionsText}>
-              Speak friend and enter or some
-            </Text>
-            <Text style={styles.instructionsText}>lorem ipsum</Text>
-          </View>
+        <View>
+            <Text style={styles.topText}>Know your rights</Text>
+            <Text style={styles.caption}>Learn how to self-advocate by reviewing regional laws and resources regarding mental health. </Text>
+        </View>
+        <View style={styles.buttonsContainer}>
           <TouchableOpacity
             activeOpacity={0.8}
             style={styles.touchable}
-            onPress={next}
+            onPress={() => navigation.navigate('Home')}
           >
-            <Text style={styles.touchableText}>Hooray!</Text>
+            <Text style={styles.touchableText}>Next</Text>
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#eeedf5",
+    backgroundColor: "#FBF2EE",
+  },
+  getStartedContainer: {
+    ...StyleSheet.absoluteFillObject,
   },
   imageContainer: {
-    width,
-    height: height / 3,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 30,
+    paddingTop: 120,
   },
   textContainer: {
-    marginTop: 30,
+    flex: 1,
   },
-  instructionsText: {
-    fontFamily: "Gotham-Light",
-    fontSize: 15,
-    marginBottom: 15,
-    alignSelf: "center",
+  buttonsContainer: {
+    flex: 1,
+    alignItems: "center",
   },
-  welcomeText: {
-    fontFamily: "Gotham-Bold",
-    fontSize: 27,
-    alignSelf: "center",
-    color: "#000000",
-    marginBottom: 20,
+  topText: {
+    fontSize: 24,
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#3C3A36",
+    marginHorizontal: 24,
+  },
+  caption: {
+    fontSize: 14,
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#78746D",
+    paddingTop: 20,
+    marginHorizontal: 24,
   },
   touchable: {
-    width: "70%",
+    width: 250,
     height: 50,
-    backgroundColor: "#4F44FF",
+    backgroundColor: "#E3562A",
     borderRadius: 34,
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 15,
-    alignSelf: "center",
-    marginTop: 100,
+    marginVertical: 60,
   },
   touchableText: {
     fontFamily: "Gotham-Medium",
     fontSize: 15,
     color: "white",
-  },
-  skipTouchable: {
-    flexDirection: "row",
-    marginTop: 20,
-    justifyContent: "center",
-  },
-  card: {
-    shadowColor: "#0000001C",
-    shadowOffset: {
-      width: 3,
-      height: 3,
-    },
-    shadowRadius: 25,
-    shadowOpacity: 1,
-    elevation: 3,
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 9,
-    width: "80%",
-    height: 100,
-    alignSelf: "center",
-    marginTop: 30,
   },
 });
