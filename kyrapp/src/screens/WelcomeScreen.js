@@ -23,7 +23,7 @@ export default function WelcomeScreen({ navigation }) {
           <TouchableOpacity
             activeOpacity={0.8}
             style={styles.touchable}
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('DrugsSearch')}
           >
             <Text style={styles.touchableText}>Next</Text>
           </TouchableOpacity>

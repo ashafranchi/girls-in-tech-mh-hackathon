@@ -11,6 +11,7 @@ import SecondOnboardingScreen from "./src/screens/SecondOnboardingScreen";
 import ThirdOnboardingScreen from "./src/screens/ThirdOnboardingScreen";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import DrugsSearchScreen from './src/screens/DrugsSearchScreen';
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,7 @@ export default function App() {
         <Stack.Screen name="SecondOnboarding" options={{headerShown: false}} component={SecondOnboardingScreen} />
         <Stack.Screen name="ThirdOnboarding" options={{headerShown: false}} component={ThirdOnboardingScreen} />
         <Stack.Screen name="Welcome" options={{headerShown: false}} component={WelcomeScreen} />
+        <Stack.Screen name="DrugsSearch" options={{headerShown: false}} component={DrugsSearchScreen} />
       </Stack.Navigator>
     </NavigationContainer>
     </SafeAreaProvider>
