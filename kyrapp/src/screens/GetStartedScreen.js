@@ -16,7 +16,7 @@ export default function GetStartedScreen({ navigation }) {
           <GetStartedImage />
         </View>
         <View>
-            <Text style={styles.topText}>Explore metal health topics and symptoms</Text>
+            <Text style={styles.topText}>Explore mental health topics and symptoms</Text>
             <Text style={styles.caption}>Our encyclopedia features a wide range of mental health topics that are free to explore.</Text>
         </View>
         <View style={styles.buttonsContainer}>

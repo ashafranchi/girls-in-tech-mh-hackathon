@@ -35,29 +35,25 @@ export default function DrugsSearchScreen({ navigation }) {
 
   return (
   <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
-      
+        <View>
+          <Text style={styles.headText}>Research Your Meds!</Text>
+        </View>
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={styles.touchable}
-            onPress={() => navigation.navigate('Home')}
-          >
-            <Text style={styles.touchableText}>Next</Text>
-          </TouchableOpacity>
         <Controller
             name="drugname"
             control={control}
             render={({field: {onChange, value }}) => (
                 <TextInput
                 onChangeText={(text) => onChange(text)}
+                style={styles.search}
                 value={value}
-                placeholder="Medication Name"
+                placeholder="Type Medication Name Here..."
                 />
             )}
         />
         <TouchableOpacity label="Search" activeOpacity={0.8}
             style={styles.touchable} onPress={handleSubmit(onSubmit)}>
-            <Text>Search</Text> 
+            <Text style={styles.touchableText}>Search</Text> 
         </TouchableOpacity>
 
         <FlatList
@@ -68,11 +64,12 @@ export default function DrugsSearchScreen({ navigation }) {
             renderItem={({ item }) => (
             <View>
               <Text>{item.openfda.brand_name}</Text>
-              <Text>{item.indications_and_usage}</Text>
+              <Text>{item.openfda.information_for_patients}</Text>
+              {/* <Text>{item.indications_and_usage}</Text>
               <Text>{item.adverse_reactions}</Text>
               <Text>{item.precautions}</Text>
               <Text>{item.warnings}</Text>
-              <Text>{item.openfda.manufacturer_name + "\n"}</Text>
+              <Text>{item.openfda.manufacturer_name + "\n"}</Text> */}
               <View>
                 <View>
                 {(item.clinical_studies_table != undefined && item.clinical_studies_table.length > 0) ? 
@@ -84,7 +81,8 @@ export default function DrugsSearchScreen({ navigation }) {
         
                 }              
                 </View>
-            </View> 
+            </View>
+              <Text>{item.openfda.clinical_pharmacology}</Text>
             </View>)} />
           
         
@@ -103,6 +101,13 @@ const styles = StyleSheet.create({
   getStartedContainer: {
     ...StyleSheet.absoluteFillObject,
   },
+  headText: {
+    paddingTop: 32,
+    fontSize: 32,
+    color: "#3C3A36",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   imageContainer: {
     flex: 1,
     justifyContent: "center",
@@ -114,6 +119,7 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flex: 1,
+    paddingTop: 32,
     alignItems: "center",
   },
   topText: {
@@ -130,6 +136,16 @@ const styles = StyleSheet.create({
     color: "#78746D",
     paddingTop: 20,
     marginHorizontal: 24,
+  },
+  search: {
+    width: 250,
+    height: 50,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 6,
+    marginVertical: 60,
   },
   touchable: {
     width: 250,
