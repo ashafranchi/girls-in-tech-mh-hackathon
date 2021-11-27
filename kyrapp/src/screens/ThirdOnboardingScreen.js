@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     color: "#3C3A36",
+    marginTop: 20,
     marginHorizontal: 24,
   },
   caption: {

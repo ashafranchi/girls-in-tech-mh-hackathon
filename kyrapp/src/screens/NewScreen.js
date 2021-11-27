@@ -6,13 +6,18 @@ export default function NewScreen ({navigation}) {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.headText}>Topics</Text>
-        <Card style={styles.card}>
-          <Image source={require('../components/Restless.png')} style={{width: 300, height: 200}} />
-          <Text style={styles.secondText}>Depression</Text>
+      <Text style={styles.caption}>Explore our detailed, straight-forward modules about mental health illnesses and advocacy. </Text>
+      <Card style={styles.card}>
+          <Image source={require('../components/Advocacy.png')} style={{width: 300, height: 200}} />
+          <Text style={styles.secondText}>Advocacy</Text>
       </Card>
       <Card style={styles.card}>
           <Image source={require('../components/Thought.png')} style={{width: 300, height: 200}} />
           <Text style={styles.secondText}>Anxiety</Text>
+      </Card>
+      <Card style={styles.card}>
+          <Image source={require('../components/Restless.png')} style={{width: 300, height: 200}} />
+          <Text style={styles.secondText}>Depression</Text>
       </Card>
       <Card style={styles.card}>
           <Image source={require('../components/Kindness.png')} style={{width: 300, height: 200}} />
@@ -26,16 +31,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FBF2EE",
+    paddingBottom: 16,
   },
   card: {
-    borderRadius: 40,
+    borderRadius: 68,
     alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 16,
+    marginHorizontal: 48,
+    height: "30%"
   },
   headText: {
     paddingTop: 32,
-    paddingLeft: 24,
+    paddingLeft: 16,
     fontSize: 32,
     color: "#3C3A36",
     justifyContent: 'center',
@@ -68,7 +75,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     color: "#78746D",
-    paddingTop: 20,
+    paddingTop: 16,
     marginHorizontal: 24,
   },
   touchable: {

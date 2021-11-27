@@ -1,13 +1,25 @@
-import React from 'react';
-import { StyleSheet, Image, Text, View, Button, TouchableOpacity } from 'react-native';
+import * as React from "react";
+import { View, Text, StyleSheet, Button } from "react-native";
+import TopImageBackground from "../components/TopImageBackground";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import HomeImage from "../components/HomeImage";
+import { useSafeArea, SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen ({navigation}) {
+
+  const insets = useSafeArea();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.headText}>Home</Text>
-        <Image source={require('../components/Home.png')} style={{width: 320, height: 400, borderWidth: 2, borderColor: "#78746D", borderRadius: 20, marginTop: 32}} />
-      <Text style={styles.secondText}>Take a Breath</Text>
-    </View>
+      <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
+      <Text style={styles.headText}>Welcome to Therapedia!</Text>
+      <TopImageBackground />
+      <View style={styles.getStartedContainer}>
+        <View style={styles.imageContainer}>
+          <HomeImage />
+          <Text style={styles.caption}>Therapedia is an app designed to simplify the mental health research process and serve as an equitable, all-in-one resource for mental health information.</Text>
+        </View>
+      </View>
+    </SafeAreaView>
   )
 }
 
@@ -15,36 +27,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FBF2EE",
-    // justifyContent: "center",
-    alignItems: "center",
   },
-  card: {
-    borderRadius: 40,
-    alignItems: "center",
-    justifyContent: "center",
-    marginHorizontal: 16,
+  getStartedContainer: {
+    ...StyleSheet.absoluteFillObject,
   },
-  headText: {
-    paddingTop: 32,
-    paddingLeft: 24,
-    fontSize: 48,
-    color: "#3C3A36",
-    justifyContent: 'center',
-    alignItems: "center",
-  },
-  secondText: {
-    fontSize: 24,
-    paddingTop: 28,
-    color: "#3C3A36",
+  imageContainer: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: "center",
+    paddingTop: 40,
   },
   textContainer: {
     flex: 1,
   },
   buttonsContainer: {
     flex: 1,
+    alignItems: "center",
+  },
+  headText: {
+    paddingTop: 48,
+    fontSize: 31,
+    color: "#3C3A36",
+    marginHorizontal: 24,
+    justifyContent: "center",
     alignItems: "center",
   },
   topText: {
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     color: "#78746D",
-    paddingTop: 20,
+    paddingTop: 32,
     marginHorizontal: 24,
   },
   touchable: {
